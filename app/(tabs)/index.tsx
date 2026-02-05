@@ -1,98 +1,991 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import {
+  Ionicons,
+  MaterialCommunityIcons
+} from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React from "react";
+import {
+  Dimensions,
+  Image,
+  Linking,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const { width } = Dimensions.get("window");
 
-export default function HomeScreen() {
+export default function Home() {
+  const router = useRouter();
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" />
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      {/* 1. Header Section - EXACTLY AS BEFORE */}
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.expertBtn}
+          activeOpacity={0.7}
+          onPress={() => Linking.openURL("https://calendly.com/your-zoom-link")} 
+        >
+          <View style={styles.expertIconBg}>
+            <Ionicons name="headset" size={14} color="#fff" />
+          </View>
+          <Text style={styles.expertText}>Ask an expert</Text>
+        </TouchableOpacity>
+
+       <TouchableOpacity 
+          style={styles.profileCircle} 
+          activeOpacity={0.8}
+          onPress={() => router.push('/profile')} 
+        >
+          <Ionicons name="person" size={20} color="#fff" />
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* NEW SECTION: PREMIUM SEARCH BAR */}
+        <View style={styles.searchContainer}>
+          <View style={styles.searchBar}>
+            <Ionicons name="search" size={20} color="#8892A3" />
+            <TextInput
+              placeholder="Search companies, gold, or bonds..."
+              style={styles.searchInput}
+              placeholderTextColor="#8892A3"
+            
+            />
+            <TouchableOpacity style={styles.filterBtn}>
+              <Ionicons name="options-outline" size={20} color="#232F3E" shadowColor="#8892A3" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* 2. Trending Card - UPDATED WITH REDIRECT */}
+        <View style={styles.trendingCard}>
+          <View style={styles.trendingRow}>
+            <View style={styles.imagePlaceholder}>
+              <Ionicons name="stats-chart" size={28} color="#232F3E" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.trendingLabel}>TRENDING NOW</Text>
+              <Text style={styles.cardTitle}>MSEI & SBI AMC Unlisted</Text>
+            </View>
+            {/* UPDATED: Navigates to Shares */}
+            <TouchableOpacity 
+              style={styles.darkCircleBtn} 
+              onPress={() => router.push("/shares")}
+            >
+              <Ionicons name="chevron-forward" size={20} color="#fff" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.divider} />
+          <Text style={styles.offerText}>
+             Invest & Get{" "}
+            <Text style={{ fontWeight: "bold", color: "#D32F2F" }}>
+              0.25% off
+            </Text>{" "}
+            ₹200 Voucher
+          </Text>
+        </View>
+
+        {/* 3. Quick Services - EXACTLY AS BEFORE */}
+        <Text style={styles.sectionHeading}>Quick Services</Text>
+        <View style={styles.grid}>
+          <TouchableOpacity
+            style={styles.gridItem}
+            activeOpacity={0.8}
+            onPress={() => router.push("/shares")}
+          >
+            <View
+              style={[styles.iconContainer, { backgroundColor: "#232F3E15" }]}
+            >
+              <MaterialCommunityIcons
+                name="chart-bar"
+                size={28}
+                color="#232F3E"
+              />
+            </View>
+            <Text style={styles.gridLabel}>Unlisted{"\n"}Shares</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.gridItem}
+            activeOpacity={0.8}
+            onPress={() => router.push("/gold")} 
+          >
+            <View
+              style={[styles.iconContainer, { backgroundColor: "#D4AF3715" }]}
+            >
+              <MaterialCommunityIcons name="gold" size={28} color="#D4AF37" />
+            </View>
+            <Text style={styles.gridLabel}>Digital{"\n"}Gold</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.gridItem} 
+            activeOpacity={0.8}
+            onPress={() => router.push("/digitalsilver")}
+          >
+            <View
+              style={[styles.iconContainer, { backgroundColor: "#C0C0C025" }]}
+            >
+              <Ionicons name="sparkles" size={28} color="#7F8C8D" />
+            </View>
+            <Text style={styles.gridLabel}>Digital{"\n"}Silver</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.gridItem} 
+            activeOpacity={0.8}
+            onPress={() => router.push("/fixeddeposit")}
+          >
+            <View
+              style={[styles.iconContainer, { backgroundColor: "#2E7D3215" }]}
+            >
+              <Ionicons name="shield-checkmark" size={26} color="#2E7D32" />
+            </View>
+            <Text style={styles.gridLabel}>Fixed{"\n"}Deposit</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* MARKET SENTIMENT GAUGE - EXACTLY AS BEFORE */}
+        <View style={styles.sentimentCard}>
+          <View style={styles.sentimentHeader}>
+            <Text style={styles.sentimentTitle}>Market Sentiment</Text>
+            <View style={styles.liveBadge}>
+              <Text style={styles.liveText}>LIVE</Text>
+            </View>
+          </View>
+          <View style={styles.gaugeContainer}>
+            <View style={styles.gaugeTrack}>
+              <View style={styles.gaugePointer} />
+            </View>
+            <View style={styles.gaugeLabels}>
+              <Text style={styles.gaugeText}>Fear</Text>
+              <Text
+                style={[
+                  styles.gaugeText,
+                  { fontWeight: "bold", color: "#2E7D32" },
+                ]}
+              >
+                Greed
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* 4. HEALTH CHECK SECTION - EXACTLY AS BEFORE */}
+        <TouchableOpacity style={styles.healthCheckCard}>
+          <View style={styles.healthIconContainer}>
+            <Ionicons name="heart-half-outline" size={24} color="#FF5252" />
+          </View>
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.healthText}>
+              Get a health check on your mutual funds
+            </Text>
+            <Text style={styles.startAnalysis}>Start analysis {">"}</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* NEW SECTION: NEW LAUNCHES CAROUSEL - EXACTLY AS BEFORE */}
+        <Text style={styles.sectionHeading}>New Launches</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.launchScroll}
+        >
+          <TouchableOpacity
+            style={[styles.launchCard, { backgroundColor: "#E3F2FD" }]}
+          >
+            <Text style={styles.launchTag}>NEW</Text>
+            <Text style={styles.launchTitle}>Green Energy Bond</Text>
+            <Text style={styles.launchDesc}>9.5% Fixed Returns</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.launchCard, { backgroundColor: "#F3E5F5" }]}
+          >
+            <Text style={styles.launchTag}>NEW</Text>
+            <Text style={styles.launchTitle}>Global Tech Basket</Text>
+            <Text style={styles.launchDesc}>US Unlisted Equities</Text>
+          </TouchableOpacity>
+        </ScrollView>
+
+        {/* 5. UNLISTED SHARES LISTING SECTION - EXACTLY AS BEFORE */}
+        <Text style={styles.sectionMainHeading}>Unlisted Shares</Text>
+        <Text style={styles.sectionSubHeading}>
+          Start investing with just 1 share
+        </Text>
+        <View style={styles.ornamentLine} />
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.marketScroll}
+        >
+          <MarketShareCard
+            tag="Top Gainer"
+            name="Metropolitan Stock Exchange"
+            price="₹6.2"
+            sub="400 share min"
+            color="#D32F2F"
+          />
+          <MarketShareCard
+            tag="Most Bought"
+            name="National Stock Exchange"
+            price="₹2,100 - ₹2,130"
+            sub="Active Market"
+            color="#003399"
+          />
+          <MarketShareCard
+            tag="Hot Right Now"
+            name="SBI Funds Management"
+            price="₹800 - ₹810"
+            sub="Trusted Brand"
+            color="#FBC02D"
+          />
+        </ScrollView>
+
+        {/* Navigates to Shares */}
+        <TouchableOpacity 
+          style={styles.viewAllSharesBtn}
+          onPress={() => router.push("/shares")}
+        >
+          <Text style={styles.viewAllSharesText}>View all unlisted shares</Text>
+          <Text style={styles.trustedText}>Trusted by 2.5 lakh+ users</Text>
+        </TouchableOpacity>
+
+        {/* 6. UNLISTED BASKETS - EXACTLY AS BEFORE */}
+        <View style={styles.basketContainer}>
+          <Text style={styles.basketTitle}>Unlisted baskets</Text>
+          <Text style={styles.basketSubtitle}>
+            Growth potential across diverse industries
+          </Text>
+          <View style={styles.ornamentLine} />
+
+          <Text style={styles.maximisedText}>
+            Maximised opportunity, minimum risk
+          </Text>
+
+          <BasketItem
+            icon="cube-outline"
+            title="Diversified"
+            sub="Invest in multiple shares, industries, and opportunities"
+          />
+          <BasketItem
+            icon="trending-up-outline"
+            title="Balanced risk"
+            sub="Don't pin your hopes on a single stock"
+          />
+          <BasketItem
+            icon="school-outline"
+            title="Beginner friendly"
+            sub="We've done the research for you"
+          />
+
+          <TouchableOpacity style={styles.redButton}>
+            <Text style={styles.redButtonText}>Explore unlisted baskets</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* 7. REFER AND EARN - EXACTLY AS BEFORE */}
+        <TouchableOpacity style={styles.referCard}>
+          <View style={styles.referIconBox}>
+            <MaterialCommunityIcons
+              name="cash-multiple"
+              size={24}
+              color="#232F3E"
+            />
+          </View>
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.referTitle}>Refer and earn!</Text>
+            <Text style={styles.referSub}>
+              Earn upto ₹10,000 for every referral
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="#8892A3" />
+        </TouchableOpacity>
+
+        {/* 8. ALL YOU NEED TO KNOW - EXACTLY AS BEFORE */}
+        <Text style={styles.sectionHeadingCenter}>All you need to know</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.videoScroll}
+        >
+          <VideoCard title="Investing in Pre IPO | Unlisted Shares" />
+          <VideoCard title="Digital Gold Explained" />
+        </ScrollView>
+
+        {/* 9. FD & BONDS SECTIONS - UPDATED WITH HEADER ARROWS */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 40 }}>
+          <Text style={[styles.sectionHeadingCenter, { marginTop: 0 }]}>High-interest FDs</Text>
+          <TouchableOpacity onPress={() => router.push("/fd")} style={{ marginLeft: 10 }}>
+            <Ionicons name="arrow-forward-circle" size={32} color="#D32F2F" />
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.sectionSubCenter}>DICGC insured</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.cardScroll}
+        >
+          <FDCard
+            bank="Suryoday Small Finance Bank"
+            rate="8.00"
+            color="#FF5722"
+            onPress={() => router.push("/fd")}
+          />
+          <FDCard
+            bank="Utkarsh Small Finance Bank"
+            rate="8.00"
+            color="#4527A0"
+            onPress={() => router.push("/fd")}
+          />
+        </ScrollView>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 40 }}>
+          <Text style={[styles.sectionHeadingCenter, { marginTop: 0 }]}>Bonds*</Text>
+          <TouchableOpacity onPress={() => router.push("/bond")} style={{ marginLeft: 10 }}>
+            <Ionicons name="arrow-forward-circle" size={32} color="#232F3E" />
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.sectionSubCenter}>SEBI regulated</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.cardScroll}
+        >
+          <BondCard 
+            name="Satin Finserv ..." 
+            yield="11.70" 
+            color="#232F3E" 
+            onPress={() => router.push("/bond")}
+          />
+          <BondCard 
+            name="Keertana Jan'2..." 
+            yield="13" 
+            color="#D32F2F" 
+            onPress={() => router.push("/bond")}
+          />
+        </ScrollView>
+
+        {/* 10. NEED HELP & BLOGS - EXACTLY AS BEFORE */}
+        <View style={styles.helpContainer}>
+          <Text style={styles.helpTitle}>Need help?</Text>
+          <View style={styles.helpContent}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.helpBody}>
+                Speak to an expert and invest with confidence
+              </Text>
+              <TouchableOpacity
+                style={styles.bookSlotBtn}
+                onPress={() =>
+                  Linking.openURL("https://calendly.com/your-zoom-link")
+                }
+              >
+                <Text style={styles.bookSlotText}>Book a slot</Text>
+              </TouchableOpacity>
+            </View>
+            <Image
+              source={{ uri: "https://via.placeholder.com/100" }}
+              style={styles.expertAvatar}
+            />
+          </View>
+          <View style={styles.supportList}>
+            <SupportItem icon="help-circle-outline" label="Browse FAQs" />
+            <SupportItem icon="mail-outline" label="Email us" />
+            <SupportItem icon="headset-outline" label="Call support" />
+          </View>
+        </View>
+
+        {/* 11. FOOTER & DISCLAIMER - EXACTLY AS BEFORE */}
+        <View style={styles.footer}>
+          <View style={styles.footerBrandRow}>
+            <Text style={styles.footerBrand}>InCred Money</Text>
+            <Text style={styles.footerCopyright}>
+              ©2022-2026 InCred Money. Built with love in India.
+            </Text>
+          </View>
+          <TouchableOpacity style={styles.disclaimerRow}>
+            <Text style={styles.disclaimerText}>Disclaimer</Text>
+            <Ionicons name="chevron-down" size={16} color="#000" />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ height: 100 }} />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
+// Helper Components 
+const MarketShareCard = ({ tag, name, price, sub, color }: any) => (
+  <TouchableOpacity style={styles.marketCard}>
+    <Text style={[styles.marketTag, { color, backgroundColor: color + "10" }]}>
+      {tag}
+    </Text>
+    <View style={[styles.marketLogo, { backgroundColor: color }]}>
+      <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 10 }}>
+        LOGO
+      </Text>
+    </View>
+    <Text style={styles.marketName} numberOfLines={2}>
+      {name}
+    </Text>
+    <Text style={styles.marketPrice}>{price}</Text>
+    <Text style={styles.marketSub}>{sub}</Text>
+    <View style={styles.smallArrow}>
+      <Ionicons name="arrow-forward" size={12} color="#000" />
+    </View>
+  </TouchableOpacity>
+);
+
+const BasketItem = ({ icon, title, sub }: any) => (
+  <View style={styles.basketItem}>
+    <Ionicons name={icon as any} size={30} color="#232F3E" />
+    <View style={{ marginLeft: 15, flex: 1 }}>
+      <Text style={styles.basketItemTitle}>{title}</Text>
+      <Text style={styles.basketItemSub}>{sub}</Text>
+    </View>
+  </View>
+);
+
+const VideoCard = ({ title }: any) => (
+  <View style={styles.videoCard}>
+    <View style={styles.videoThumb}>
+      <Ionicons name="play-circle" size={40} color="#fff" />
+    </View>
+    <Text style={styles.videoTitle}>{title}</Text>
+  </View>
+);
+
+const FDCard = ({ bank, rate, color, onPress }: any) => (
+  <View style={styles.fdCard}>
+    <View style={[styles.bankCircle, { backgroundColor: color }]} />
+    <Text style={styles.bankName}>{bank}</Text>
+    <Text style={styles.uptoText}>upto</Text>
+    <Text style={styles.rateText}>
+      {rate}% <Text style={styles.pa}>p.a.</Text>
+    </Text>
+    <TouchableOpacity style={styles.circleArrow} onPress={onPress}>
+      <Ionicons name="arrow-forward" size={16} color="#000" />
+    </TouchableOpacity>
+  </View>
+);
+
+const BondCard = ({ name, yield: ytm, color, onPress }: any) => (
+  <View style={styles.fdCard}>
+    <View style={[styles.bankSquare, { backgroundColor: color }]} />
+    <Text style={styles.bankName}>{name}</Text>
+    <Text style={styles.uptoText}>YTM upto</Text>
+    <Text style={styles.rateText}>
+      {ytm}% <Text style={styles.pa}>p.a.</Text>
+    </Text>
+    <TouchableOpacity style={styles.circleArrow} onPress={onPress}>
+      <Ionicons
+        name="arrow-up-outline"
+        size={16}
+        color="#000"
+        style={{ transform: [{ rotate: "45deg" }] }}
+      />
+    </TouchableOpacity>
+  </View>
+);
+
+const SupportItem = ({ icon, label }: any) => (
+  <TouchableOpacity style={styles.supportItem}>
+    <Ionicons name={icon} size={22} color="#1A1D1F" />
+    <Text style={styles.supportLabel}>{label}</Text>
+    <Ionicons name="chevron-forward" size={18} color="#8892A3" />
+  </TouchableOpacity>
+);
+
+const BlogListItem = ({ title, date }: any) => (
+  <View style={styles.blogItem}>
+    <View style={styles.blogThumb} />
+    <View style={{ flex: 1, paddingLeft: 12 }}>
+      <Text style={styles.blogItemTitle}>{title}</Text>
+      <Text style={styles.blogItemDate}>By Vijay Kuppa • {date}</Text>
+    </View>
+    <Ionicons name="arrow-forward-circle-outline" size={20} color="#000" />
+  </View>
+);
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#F8F9FB",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    alignItems: "center",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  expertBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    padding: 6,
+    paddingRight: 15,
+    borderWidth: 1,
+    borderColor: "#E0E4E8",
+    elevation: 2,
   },
+  expertIconBg: {
+    backgroundColor: "#232F3E",
+    padding: 6,
+    borderRadius: 20,
+    marginRight: 10,
+  },
+  expertText: { fontSize: 13, fontWeight: "700", color: "#232F3E" },
+  profileCircle: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "#232F3E",
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+  },
+  scrollContent: { paddingBottom: 20 },
+  trendingCard: {
+    backgroundColor: "#fff",
+    margin: 20,
+    padding: 20,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+    elevation: 5,
+  },
+  trendingRow: { flexDirection: "row", alignItems: "center" },
+  trendingLabel: {
+    fontSize: 10,
+    fontWeight: "800",
+    color: "#8892A3",
+    letterSpacing: 1,
+    marginBottom: 4,
+  },
+  imagePlaceholder: {
+    width: 55,
+    height: 55,
+    borderRadius: 16,
+    backgroundColor: "#F0F3F6",
+    marginRight: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardTitle: { fontSize: 17, fontWeight: "bold", color: "#1A1D1F" },
+  divider: { height: 1, backgroundColor: "#F0F3F6", marginVertical: 15 },
+  offerText: { fontSize: 13, color: "#444", fontWeight: "500" },
+  darkCircleBtn: {
+    backgroundColor: "#232F3E",
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  sectionHeading: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#1A1D1F",
+    marginLeft: 20,
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  grid: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 15,
+  },
+  gridItem: {
+    backgroundColor: "#fff",
+    width: (width - 60) / 4,
+    borderRadius: 20,
+    paddingVertical: 15,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+    elevation: 2,
+  },
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  gridLabel: {
+    color: "#1A1D1F",
+    fontSize: 11,
+    fontWeight: "700",
+    textAlign: "center",
+    lineHeight: 14,
+  },
+  healthCheckCard: {
+    flexDirection: "row",
+    backgroundColor: "#FFF5F5",
+    marginHorizontal: 20,
+    marginTop: 15,
+    padding: 15,
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  healthIconContainer: {
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  healthText: { fontSize: 14, color: "#232F3E", fontWeight: "500" },
+  startAnalysis: { color: "#D32F2F", fontWeight: "bold", marginTop: 5 },
+  sectionMainHeading: {
+    fontSize: 28,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 35,
+  },
+  sectionSubHeading: {
+    fontSize: 15,
+    color: "#8892A3",
+    textAlign: "center",
+    marginTop: 5,
+  },
+  ornamentLine: {
+    height: 1,
+    width: 60,
+    backgroundColor: "#E0E4E8",
+    alignSelf: "center",
+    marginVertical: 15,
+  },
+  marketScroll: { paddingLeft: 20, paddingBottom: 10 },
+  marketCard: {
+    backgroundColor: "#fff",
+    width: 180,
+    borderRadius: 20,
+    padding: 15,
+    marginRight: 15,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+    elevation: 3,
+  },
+  marketTag: {
+    fontSize: 10,
+    fontWeight: "bold",
+    alignSelf: "flex-start",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  marketLogo: {
+    width: 40,
+    height: 40,
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  marketName: {
+    fontSize: 13,
+    fontWeight: "bold",
+    color: "#1A1D1F",
+    height: 40,
+  },
+  marketPrice: { fontSize: 15, fontWeight: "bold", marginTop: 5 },
+  marketSub: { fontSize: 11, color: "#8892A3", marginTop: 3 },
+  smallArrow: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#E0E4E8",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  viewAllSharesBtn: {
+    backgroundColor: "#D32F2F",
+    margin: 20,
+    padding: 18,
+    borderRadius: 100,
+    alignItems: "center",
+  },
+  viewAllSharesText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  trustedText: { color: "#fff", fontSize: 10, marginTop: 4, opacity: 0.8 },
+  basketContainer: {
+    backgroundColor: "#fff",
+    margin: 20,
+    padding: 25,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+  },
+  basketTitle: { fontSize: 24, fontWeight: "bold", textAlign: "center" },
+  basketSubtitle: {
+    fontSize: 14,
+    color: "#8892A3",
+    textAlign: "center",
+    marginTop: 5,
+  },
+  maximisedText: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#000",
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  basketItem: { flexDirection: "row", alignItems: "center", marginBottom: 25 },
+  basketItemTitle: { fontSize: 16, fontWeight: "bold" },
+  basketItemSub: { fontSize: 13, color: "#8892A3", marginTop: 2 },
+  redButton: {
+    backgroundColor: "#D32F2F",
+    padding: 18,
+    borderRadius: 100,
+    alignItems: "center",
+  },
+  redButtonText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  referCard: {
+    flexDirection: "row",
+    margin: 20,
+    padding: 20,
+    backgroundColor: "#EBF2FF",
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  referIconBox: {
+    width: 45,
+    height: 45,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  referTitle: { fontSize: 16, fontWeight: "bold" },
+  referSub: { fontSize: 12, color: "#8892A3" },
+  videoScroll: { paddingLeft: 20, paddingBottom: 20 },
+  videoCard: { width: 250, marginRight: 15 },
+  videoThumb: {
+    height: 140,
+    backgroundColor: "#232F3E",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  videoTitle: { fontSize: 14, fontWeight: "600", marginTop: 10 },
+  sectionHeadingCenter: {
+    fontSize: 28,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 40,
+  },
+  sectionSubCenter: {
+    fontSize: 14,
+    color: "#8892A3",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  cardScroll: { paddingLeft: 20, paddingBottom: 10 },
+  fdCard: {
+    backgroundColor: "#fff",
+    width: 220,
+    borderRadius: 24,
+    padding: 20,
+    marginRight: 15,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+    elevation: 3,
+  },
+  bankCircle: { width: 40, height: 40, borderRadius: 20, marginBottom: 15 },
+  bankSquare: { width: 40, height: 40, borderRadius: 8, marginBottom: 15 },
+  bankName: { fontSize: 16, fontWeight: "700", height: 45 },
+  uptoText: { fontSize: 12, color: "#8892A3", marginTop: 15 },
+  rateText: { fontSize: 24, fontWeight: "bold", marginTop: 5 },
+  pa: { fontSize: 12, fontWeight: "normal" },
+  circleArrow: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#E0E4E8",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    marginTop: 15,
+  },
+  helpContainer: { padding: 20 },
+  helpTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  helpContent: { flexDirection: "row", alignItems: "center", marginBottom: 20 },
+  helpBody: { fontSize: 16, color: "#444", lineHeight: 22 },
+  bookSlotBtn: {
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    borderWidth: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 100,
+    alignSelf: "flex-start",
+    marginTop: 15,
+  },
+  bookSlotText: { fontWeight: "bold" },
+  expertAvatar: { width: 100, height: 100, borderRadius: 20 },
+  supportList: {
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+    overflow: "hidden",
+  },
+  supportItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: "#F0F3F6",
+  },
+  supportLabel: { flex: 1, marginLeft: 15, fontSize: 15, fontWeight: "600" },
+  blogListContainer: {
+    backgroundColor: "#fff",
+    margin: 20,
+    padding: 20,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "#EEF0F2",
+  },
+  blogItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#F0F3F6",
+  },
+  blogThumb: {
+    width: 50,
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: "#F0F3F6",
+  },
+  blogItemTitle: { fontSize: 14, fontWeight: "700", color: "#000" },
+  blogItemDate: { fontSize: 12, color: "#8892A3", marginTop: 4 },
+  outlineButton: {
+    borderColor: "#000",
+    borderWidth: 1,
+    padding: 16,
+    borderRadius: 100,
+    alignItems: "center",
+    marginTop: 20,
+  },
+  outlineButtonText: { fontWeight: "bold" },
+  footer: {
+    padding: 25,
+    borderTopWidth: 1,
+    borderTopColor: "#F0F3F6",
+    alignItems: "center",
+  },
+  footerBrandRow: { alignItems: "center", marginBottom: 20 },
+  footerBrand: { fontSize: 18, fontWeight: "bold", color: "#232F3E" },
+  footerCopyright: { fontSize: 12, color: "#8892A3", marginTop: 5 },
+  disclaimerRow: { flexDirection: "row", alignItems: "center" },
+  disclaimerText: { fontSize: 14, fontWeight: "bold", marginRight: 8 },
+
+  // NEW STYLES FOR THE FRESH SECTIONS
+  searchContainer: { paddingHorizontal: 20, marginTop: 10, marginBottom: 10 },
+  searchBar: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderRadius: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+    alignItems: "center",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+  },
+  searchInput: { flex: 1, marginLeft: 10, color: "#232F3E", fontSize: 14 },
+  filterBtn: {
+    padding: 5,
+    borderLeftWidth: 1,
+    borderLeftColor: "#F0F3F6",
+    marginLeft: 10,
+  },
+  sentimentCard: {
+    backgroundColor: "#fff",
+    margin: 20,
+    padding: 20,
+    borderRadius: 24,
+    elevation: 4,
+  },
+  sentimentHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 15,
+  },
+  sentimentTitle: { fontSize: 16, fontWeight: "bold", color: "#232F3E" },
+  liveBadge: {
+    backgroundColor: "#FFEDED",
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 5,
+  },
+  liveText: { color: "#FF5252", fontSize: 10, fontWeight: "bold" },
+  gaugeContainer: { height: 40, width: "100%" },
+  gaugeTrack: {
+    height: 8,
+    backgroundColor: "#F0F3F6",
+    borderRadius: 4,
+    width: "100%",
+    overflow: "hidden",
+    justifyContent: "center",
+  },
+  gaugePointer: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    backgroundColor: "#2E7D32",
+    borderBottomWidth: 2,
+    borderColor: "#fff",
+    alignSelf: "center",
+    position: "absolute",
+    left: "75%",
+  },
+  gaugeLabels: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  gaugeText: { fontSize: 12, color: "#8892A3" },
+  launchScroll: { paddingLeft: 20, paddingBottom: 10 },
+  launchCard: { width: 200, padding: 20, borderRadius: 20, marginRight: 15 },
+  launchTag: {
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "#000",
+    opacity: 0.6,
+    marginBottom: 5,
+  },
+  launchTitle: { fontSize: 16, fontWeight: "bold", color: "#232F3E" },
+  launchDesc: { fontSize: 12, color: "#232F3E", opacity: 0.8, marginTop: 5 },
 });
