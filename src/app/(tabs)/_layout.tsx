@@ -1,7 +1,7 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { Platform, View } from "react-native";
-import { UserProvider } from "./UserContext";
+import { UserProvider } from "./Usercontext"; // Adjusted path to climb out of (tabs) and fixed casing
 
 export default function TabLayout() {
   return (
@@ -119,7 +119,7 @@ export default function TabLayout() {
         />
 
         {/* --- HIDDEN SCREENS --- */}
-        {/* These screens exist for navigation but won't show in the bottom bar */}
+        {/* href: null ensures they are not visible in the bottom bar */}
         
         <Tabs.Screen name="profile" options={{ href: null }} />
         <Tabs.Screen name="auth" options={{ href: null }} />
@@ -134,6 +134,8 @@ export default function TabLayout() {
         <Tabs.Screen name="contact" options={{ href: null }} />
         <Tabs.Screen name="fd" options={{ href: null }} />
         <Tabs.Screen name="bond" options={{ href: null }} />
+        <Tabs.Screen name="details" options={{ href: null }} />
+        <Tabs.Screen name="index_share" options={{ href: null }} />
 
       </Tabs>
     </UserProvider>

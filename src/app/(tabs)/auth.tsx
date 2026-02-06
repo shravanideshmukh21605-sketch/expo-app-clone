@@ -12,7 +12,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import { useUser } from "./UserContext";
+import { useUser } from "./Usercontext";
 
 export default function AuthScreen() {
   const router = useRouter();
