@@ -9,18 +9,18 @@ export default function MoreScreen() {
   const { user, logout } = useUser();
 
   const menuItems = [
-    { id: 'profile', label: user?.fullName || 'Profile', subLabel: 'Profile', icon: 'account-circle-outline', route: '/profile', type: 'mc' },
-    { id: 'milestones', label: 'Milestones', icon: 'star-check-outline', route: '/portfolio', type: 'mc' },
-    { id: 'refer', label: 'Refer & Rewards', icon: 'account-group-outline', route: '/refer', type: 'mc' },
-    { id: 'reports', label: 'Reports', icon: 'file-document-outline', route: '/reports', type: 'mc' },
-    { id: 'blogs', label: 'Blogs', icon: 'notebook-outline', route: '/blogs', type: 'mc' },
-    { id: 'faqs', label: 'General FAQs', icon: 'file-outline', route: '/faqs', type: 'mc' },
-    { id: 'privacy', label: 'Privacy Policy', icon: 'shield-check-outline', route: '/privacy', type: 'mc' },
-    { id: 'terms', label: 'Terms and Conditions', icon: 'file-text-outline', route: '/terms', type: 'mc' },
-    { id: 'disclaimer', label: 'Disclaimer', icon: 'alert-circle-outline', route: '/disclaimer', type: 'mc' },
-    { id: 'about', label: 'About Us', icon: 'fingerprint', route: '/about', type: 'mc' },
-    { id: 'contact', label: 'Contact Us', icon: 'phone-outline', route: '/contact', type: 'mc' },
-  ];
+  { id: 'profile', label: user?.fullName || 'Profile', subLabel: 'Profile', icon: 'account-circle-outline', route: '/profile', type: 'mc' },
+  { id: 'milestones', label: 'Milestones', icon: 'star-check-outline', route: '/portfolio', type: 'mc' },
+  { id: 'refer', label: 'Refer & Rewards', icon: 'account-group-outline', route: '/refer', type: 'mc' },
+  { id: 'reports', label: 'Reports', icon: 'file-document-outline', route: '/reports', type: 'mc' },
+  { id: 'blogs', label: 'Blogs', icon: 'notebook-outline', route: '/blogs', type: 'mc' },
+  { id: 'faqs', label: 'General FAQs', icon: 'file-outline', route: '/faqs', type: 'mc' },
+  { id: 'privacy', label: 'Privacy Policy', icon: 'shield-check-outline', route: '/privacy', type: 'mc' },
+  { id: 'terms', label: 'Terms and Conditions', icon: 'file-text-outline', route: '/terms', type: 'mc' },
+  { id: 'disclaimer', label: 'Disclaimer', icon: 'alert-circle-outline', route: '/disclaimer', type: 'mc' },
+  { id: 'about', label: 'About Us', icon: 'fingerprint', route: '/about', type: 'mc' },
+  { id: 'contact', label: 'Contact Us', icon: 'phone-outline', route: '/contact', type: 'mc' },
+];
 
   return (
     <SafeAreaView style={styles.container}>

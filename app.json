@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Incred Money Clone",
-    "slug": "incred-money-clone",
+    "name": "Pureframe Labs pvt ltd",
+    "slug": "pureframe-labs-pvt-ltd",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,19 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "slug": "pureframe-labs-pvt-ltd"
+        
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/39c22727-1ac4-48ce-abaf-7c34ba80b340"
+    },
+    "owner": "gayatri87"
   }
 }

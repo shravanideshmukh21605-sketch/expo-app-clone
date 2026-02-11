@@ -1,7 +1,7 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { Platform, View } from "react-native";
-import { UserProvider } from "./Usercontext"; // Adjusted path to climb out of (tabs) and fixed casing
+import { UserProvider } from "./Usercontext"; 
 
 export default function TabLayout() {
   return (
@@ -30,102 +30,64 @@ export default function TabLayout() {
           },
         }}
       >
-        {/* 1. HOME */}
+        {/* --- 1. VISIBLE TABS (Only these 5 show icons) --- */}
         <Tabs.Screen
           name="index"
           options={{
             title: "Home",
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons
-                name={focused ? "home" : "home-outline"}
-                size={24}
-                color={color}
-              />
+              <Ionicons name={focused ? "home" : "home-outline"} size={24} color={color} />
             ),
           }}
         />
 
-        {/* 2. UNLISTED SHARES */}
         <Tabs.Screen
           name="shares"
           options={{
             title: "Unlisted",
             tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons
-                name={focused ? "chart-box" : "chart-box-outline"}
-                size={24}
-                color={color}
-              />
+              <MaterialCommunityIcons name={focused ? "chart-box" : "chart-box-outline"} size={24} color={color} />
             ),
           }}
         />
 
-        {/* 3. GOLD */}
         <Tabs.Screen
-          name="gold"
+          name="mutualfund"
           options={{
-            title: "Gold",
+            title: "Mutual Fund",
             tabBarIcon: ({ color, focused }) => (
-              <View
-                style={
-                  focused
-                    ? {
-                        backgroundColor: "#D32F2F10",
-                        padding: 8,
-                        borderRadius: 12,
-                        marginTop: -5,
-                      }
-                    : null
-                }
-              >
-                <Ionicons
-                  name={focused ? "leaf" : "leaf-outline"}
-                  size={24}
-                  color={color}
-                />
-              </View>
+              <Ionicons name={focused ? "leaf" : "leaf-outline"} size={24} color={color} />
             ),
           }}
         />
 
-        {/* 4. PORTFOLIO */}
         <Tabs.Screen
           name="portfolio"
           options={{
             title: "Portfolio",
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons
-                name={focused ? "briefcase" : "briefcase-outline"}
-                size={24}
-                color={color}
-              />
+              <Ionicons name={focused ? "briefcase" : "briefcase-outline"} size={24} color={color} />
             ),
           }}
         />
 
-        {/* 5. MORE */}
         <Tabs.Screen
           name="more"
           options={{
             title: "More",
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons
-                name={focused ? "grid" : "grid-outline"}
-                size={24}
-                color={color}
-              />
+              <Ionicons name={focused ? "grid" : "grid-outline"} size={24} color={color} />
             ),
           }}
         />
 
-        {/* --- HIDDEN SCREENS --- */}
-        {/* href: null ensures they are not visible in the bottom bar */}
-        
+        {/* --- 2. HIDDEN SCREENS (href: null hides them from the bottom bar) --- */}
+        {/* CHECK THIS LIST: Make sure each name only appears ONCE here and is NOT above */}
         <Tabs.Screen name="profile" options={{ href: null }} />
         <Tabs.Screen name="auth" options={{ href: null }} />
         <Tabs.Screen name="refer" options={{ href: null }} />
         <Tabs.Screen name="reports" options={{ href: null }} />
-        <Tabs.Screen name="blogs" options={{ href: null }} />
+        <Tabs.Screen name="blogs" options={{ href: null }} /> 
         <Tabs.Screen name="faqs" options={{ href: null }} />
         <Tabs.Screen name="privacy" options={{ href: null }} />
         <Tabs.Screen name="terms" options={{ href: null }} />
@@ -136,7 +98,14 @@ export default function TabLayout() {
         <Tabs.Screen name="bond" options={{ href: null }} />
         <Tabs.Screen name="details" options={{ href: null }} />
         <Tabs.Screen name="index_share" options={{ href: null }} />
-
+        <Tabs.Screen name="Usercontext" options={{ href: null }} />
+        <Tabs.Screen name="digitalsilver" options={{ href: null }} />
+        <Tabs.Screen name="digitalgold" options={{ href: null }} />
+        <Tabs.Screen name="fixeddeposit" options={{ href: null }} />
+        <Tabs.Screen name="gold" options={{ href: null }} />
+        <Tabs.Screen name="LoginandRegister/login" options={{ href: null }} />
+        <Tabs.Screen name="LoginandRegister/register" options={{ href: null }} />
+        <Tabs.Screen name="LoginandRegister/style" options={{ href: null }} />
       </Tabs>
     </UserProvider>
   );

@@ -28,7 +28,7 @@ export default function Home() {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
 
-      {/* 1. Header Section - EXACTLY AS BEFORE */}
+      {/* 1. Header Section */}
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.expertBtn}
@@ -44,7 +44,7 @@ export default function Home() {
        <TouchableOpacity 
           style={styles.profileCircle} 
           activeOpacity={0.8}
-          onPress={() => router.push('/profile')} 
+          onPress={() => router.push('/LoginandRegister/login')} 
         >
           <Ionicons name="person" size={20} color="#fff" />
         </TouchableOpacity>
@@ -70,7 +70,7 @@ export default function Home() {
           </View>
         </View>
 
-        {/* 2. Trending Card - UPDATED WITH REDIRECT */}
+        {/* 2. Trending Card */}
         <View style={styles.trendingCard}>
           <View style={styles.trendingRow}>
             <View style={styles.imagePlaceholder}>
@@ -80,7 +80,6 @@ export default function Home() {
               <Text style={styles.trendingLabel}>TRENDING NOW</Text>
               <Text style={styles.cardTitle}>MSEI & SBI AMC Unlisted</Text>
             </View>
-            {/* UPDATED: Navigates to Shares */}
             <TouchableOpacity 
               style={styles.darkCircleBtn} 
               onPress={() => router.push("/shares")}
@@ -98,7 +97,7 @@ export default function Home() {
           </Text>
         </View>
 
-        {/* 3. Quick Services - EXACTLY AS BEFORE */}
+        {/* 3. Quick Services */}
         <Text style={styles.sectionHeading}>Quick Services</Text>
         <View style={styles.grid}>
           <TouchableOpacity
@@ -121,44 +120,18 @@ export default function Home() {
           <TouchableOpacity
             style={styles.gridItem}
             activeOpacity={0.8}
-            onPress={() => router.push("/gold")} 
-          >
-            <View
-              style={[styles.iconContainer, { backgroundColor: "#D4AF3715" }]}
-            >
-              <MaterialCommunityIcons name="gold" size={28} color="#D4AF37" />
-            </View>
-            <Text style={styles.gridLabel}>Digital{"\n"}Gold</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-            style={styles.gridItem} 
-            activeOpacity={0.8}
-            onPress={() => router.push("/digitalsilver")}
-          >
-            <View
-              style={[styles.iconContainer, { backgroundColor: "#C0C0C025" }]}
-            >
-              <Ionicons name="sparkles" size={28} color="#7F8C8D" />
-            </View>
-            <Text style={styles.gridLabel}>Digital{"\n"}Silver</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-            style={styles.gridItem} 
-            activeOpacity={0.8}
-            onPress={() => router.push("/fixeddeposit")}
+            onPress={() => router.push("/mutualfund")} 
           >
             <View
               style={[styles.iconContainer, { backgroundColor: "#2E7D3215" }]}
             >
               <Ionicons name="shield-checkmark" size={26} color="#2E7D32" />
             </View>
-            <Text style={styles.gridLabel}>Fixed{"\n"}Deposit</Text>
+            <Text style={styles.gridLabel}>Mutual{"\n"}fund</Text>
           </TouchableOpacity>
         </View>
 
-        {/* MARKET SENTIMENT GAUGE - EXACTLY AS BEFORE */}
+        {/* MARKET SENTIMENT GAUGE */}
         <View style={styles.sentimentCard}>
           <View style={styles.sentimentHeader}>
             <Text style={styles.sentimentTitle}>Market Sentiment</Text>
@@ -168,7 +141,7 @@ export default function Home() {
           </View>
           <View style={styles.gaugeContainer}>
             <View style={styles.gaugeTrack}>
-              <View style={styles.gaugePointer} />
+              <View style={[styles.gaugePointer, { left: '75%' }]} />
             </View>
             <View style={styles.gaugeLabels}>
               <Text style={styles.gaugeText}>Fear</Text>
@@ -184,7 +157,7 @@ export default function Home() {
           </View>
         </View>
 
-        {/* 4. HEALTH CHECK SECTION - EXACTLY AS BEFORE */}
+        {/* 4. HEALTH CHECK SECTION */}
         <TouchableOpacity style={styles.healthCheckCard}>
           <View style={styles.healthIconContainer}>
             <Ionicons name="heart-half-outline" size={24} color="#FF5252" />
@@ -197,7 +170,7 @@ export default function Home() {
           </View>
         </TouchableOpacity>
 
-        {/* NEW SECTION: NEW LAUNCHES CAROUSEL - EXACTLY AS BEFORE */}
+        {/* NEW SECTION: NEW LAUNCHES CAROUSEL */}
         <Text style={styles.sectionHeading}>New Launches</Text>
         <ScrollView
           horizontal
@@ -220,7 +193,7 @@ export default function Home() {
           </TouchableOpacity>
         </ScrollView>
 
-        {/* 5. UNLISTED SHARES LISTING SECTION - EXACTLY AS BEFORE */}
+        {/* 5. UNLISTED SHARES LISTING SECTION */}
         <Text style={styles.sectionMainHeading}>Unlisted Shares</Text>
         <Text style={styles.sectionSubHeading}>
           Start investing with just 1 share
@@ -255,7 +228,6 @@ export default function Home() {
           />
         </ScrollView>
 
-        {/* Navigates to Shares */}
         <TouchableOpacity 
           style={styles.viewAllSharesBtn}
           onPress={() => router.push("/shares")}
@@ -264,7 +236,7 @@ export default function Home() {
           <Text style={styles.trustedText}>Trusted by 2.5 lakh+ users</Text>
         </TouchableOpacity>
 
-        {/* 6. UNLISTED BASKETS - EXACTLY AS BEFORE */}
+        {/* 6. UNLISTED BASKETS */}
         <View style={styles.basketContainer}>
           <Text style={styles.basketTitle}>Unlisted baskets</Text>
           <Text style={styles.basketSubtitle}>
@@ -297,7 +269,7 @@ export default function Home() {
           </TouchableOpacity>
         </View>
 
-        {/* 7. REFER AND EARN - EXACTLY AS BEFORE */}
+        {/* 7. REFER AND EARN */}
         <TouchableOpacity style={styles.referCard}>
           <View style={styles.referIconBox}>
             <MaterialCommunityIcons
@@ -315,7 +287,7 @@ export default function Home() {
           <Ionicons name="chevron-forward" size={20} color="#8892A3" />
         </TouchableOpacity>
 
-        {/* 8. ALL YOU NEED TO KNOW - EXACTLY AS BEFORE */}
+        {/* 8. ALL YOU NEED TO KNOW */}
         <Text style={styles.sectionHeadingCenter}>All you need to know</Text>
         <ScrollView
           horizontal
@@ -326,89 +298,40 @@ export default function Home() {
           <VideoCard title="Digital Gold Explained" />
         </ScrollView>
 
-        {/* 9. FD & BONDS SECTIONS - UPDATED WITH HEADER ARROWS */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 40 }}>
-          <Text style={[styles.sectionHeadingCenter, { marginTop: 0 }]}>High-interest FDs</Text>
-          <TouchableOpacity onPress={() => router.push("/fd")} style={{ marginLeft: 10 }}>
-            <Ionicons name="arrow-forward-circle" size={32} color="#D32F2F" />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.sectionSubCenter}>DICGC insured</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.cardScroll}
-        >
-          <FDCard
-            bank="Suryoday Small Finance Bank"
-            rate="8.00"
-            color="#FF5722"
-            onPress={() => router.push("/fd")}
-          />
-          <FDCard
-            bank="Utkarsh Small Finance Bank"
-            rate="8.00"
-            color="#4527A0"
-            onPress={() => router.push("/fd")}
-          />
-        </ScrollView>
+        {/* 10. NEED HELP & BLOGS */}
+<View style={styles.helpContainer}>
+  <Text style={styles.helpTitle}>Need help?</Text>
+  <View style={styles.helpContent}>
+    <View style={{ flex: 1 }}>
+      <Text style={styles.helpBody}>
+        Speak to an expert and invest with confidence
+      </Text>
+      <TouchableOpacity
+        style={styles.bookSlotBtn}
+        onPress={() =>
+          Linking.openURL("https://calendly.com/your-zoom-link")
+        }
+      >
+        <Text style={styles.bookSlotText}>Book a slot</Text>
+      </TouchableOpacity>
+    </View>
+    <Image
+      source={{ uri: "https://via.placeholder.com/100" }}
+      style={styles.expertAvatar}
+    />
+  </View>
+  <View style={styles.supportList}>
+    {/* UPDATED: Added onPress to redirect to faqs */}
+    <TouchableOpacity onPress={() => router.push("/faqs")}>
+      <SupportItem icon="help-circle-outline" label="Browse FAQs" />
+    </TouchableOpacity>
+    
+    <SupportItem icon="mail-outline" label="Email us" />
+    <SupportItem icon="headset-outline" label="Call support" />
+  </View>
+</View>
 
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 40 }}>
-          <Text style={[styles.sectionHeadingCenter, { marginTop: 0 }]}>Bonds*</Text>
-          <TouchableOpacity onPress={() => router.push("/bond")} style={{ marginLeft: 10 }}>
-            <Ionicons name="arrow-forward-circle" size={32} color="#232F3E" />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.sectionSubCenter}>SEBI regulated</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.cardScroll}
-        >
-          <BondCard 
-            name="Satin Finserv ..." 
-            yield="11.70" 
-            color="#232F3E" 
-            onPress={() => router.push("/bond")}
-          />
-          <BondCard 
-            name="Keertana Jan'2..." 
-            yield="13" 
-            color="#D32F2F" 
-            onPress={() => router.push("/bond")}
-          />
-        </ScrollView>
-
-        {/* 10. NEED HELP & BLOGS - EXACTLY AS BEFORE */}
-        <View style={styles.helpContainer}>
-          <Text style={styles.helpTitle}>Need help?</Text>
-          <View style={styles.helpContent}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.helpBody}>
-                Speak to an expert and invest with confidence
-              </Text>
-              <TouchableOpacity
-                style={styles.bookSlotBtn}
-                onPress={() =>
-                  Linking.openURL("https://calendly.com/your-zoom-link")
-                }
-              >
-                <Text style={styles.bookSlotText}>Book a slot</Text>
-              </TouchableOpacity>
-            </View>
-            <Image
-              source={{ uri: "https://via.placeholder.com/100" }}
-              style={styles.expertAvatar}
-            />
-          </View>
-          <View style={styles.supportList}>
-            <SupportItem icon="help-circle-outline" label="Browse FAQs" />
-            <SupportItem icon="mail-outline" label="Email us" />
-            <SupportItem icon="headset-outline" label="Call support" />
-          </View>
-        </View>
-
-        {/* 11. FOOTER & DISCLAIMER - EXACTLY AS BEFORE */}
+        {/* 11. FOOTER & DISCLAIMER */}
         <View style={styles.footer}>
           <View style={styles.footerBrandRow}>
             <Text style={styles.footerBrand}>InCred Money</Text>
@@ -466,39 +389,6 @@ const VideoCard = ({ title }: any) => (
       <Ionicons name="play-circle" size={40} color="#fff" />
     </View>
     <Text style={styles.videoTitle}>{title}</Text>
-  </View>
-);
-
-const FDCard = ({ bank, rate, color, onPress }: any) => (
-  <View style={styles.fdCard}>
-    <View style={[styles.bankCircle, { backgroundColor: color }]} />
-    <Text style={styles.bankName}>{bank}</Text>
-    <Text style={styles.uptoText}>upto</Text>
-    <Text style={styles.rateText}>
-      {rate}% <Text style={styles.pa}>p.a.</Text>
-    </Text>
-    <TouchableOpacity style={styles.circleArrow} onPress={onPress}>
-      <Ionicons name="arrow-forward" size={16} color="#000" />
-    </TouchableOpacity>
-  </View>
-);
-
-const BondCard = ({ name, yield: ytm, color, onPress }: any) => (
-  <View style={styles.fdCard}>
-    <View style={[styles.bankSquare, { backgroundColor: color }]} />
-    <Text style={styles.bankName}>{name}</Text>
-    <Text style={styles.uptoText}>YTM upto</Text>
-    <Text style={styles.rateText}>
-      {ytm}% <Text style={styles.pa}>p.a.</Text>
-    </Text>
-    <TouchableOpacity style={styles.circleArrow} onPress={onPress}>
-      <Ionicons
-        name="arrow-up-outline"
-        size={16}
-        color="#000"
-        style={{ transform: [{ rotate: "45deg" }] }}
-      />
-    </TouchableOpacity>
   </View>
 );
 
@@ -610,17 +500,23 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
+    marginTop: 15,
+    marginBottom: 15,
   },
   gridItem: {
-    backgroundColor: "#fff",
-    width: (width - 60) / 4,
+    backgroundColor: "#ffffff",
+    width: (width - 60) / 2,
     borderRadius: 20,
-    paddingVertical: 15,
+    paddingVertical: 25,
     alignItems: "center",
     borderWidth: 1,
     borderColor: "#EEF0F2",
     elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   iconContainer: {
     width: 50,
@@ -632,10 +528,10 @@ const styles = StyleSheet.create({
   },
   gridLabel: {
     color: "#1A1D1F",
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: "700",
     textAlign: "center",
-    lineHeight: 14,
+    lineHeight: 18,
   },
   healthCheckCard: {
     flexDirection: "row",
@@ -803,33 +699,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   cardScroll: { paddingLeft: 20, paddingBottom: 10 },
-  fdCard: {
-    backgroundColor: "#fff",
-    width: 220,
-    borderRadius: 24,
-    padding: 20,
-    marginRight: 15,
-    borderWidth: 1,
-    borderColor: "#EEF0F2",
-    elevation: 3,
-  },
-  bankCircle: { width: 40, height: 40, borderRadius: 20, marginBottom: 15 },
-  bankSquare: { width: 40, height: 40, borderRadius: 8, marginBottom: 15 },
-  bankName: { fontSize: 16, fontWeight: "700", height: 45 },
-  uptoText: { fontSize: 12, color: "#8892A3", marginTop: 15 },
-  rateText: { fontSize: 24, fontWeight: "bold", marginTop: 5 },
-  pa: { fontSize: 12, fontWeight: "normal" },
-  circleArrow: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: "#E0E4E8",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "flex-start",
-    marginTop: 15,
-  },
   helpContainer: { padding: 20 },
   helpTitle: {
     fontSize: 28,
