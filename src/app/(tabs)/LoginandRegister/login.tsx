@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  Alert, 
-  SafeAreaView, 
-  ActivityIndicator, 
-  ScrollView 
-} from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import {
+  ActivityIndicator,
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
 
 // Ensuring path matches your Usercontext location
 import { useUser } from '../Usercontext';
-import styles from './style'; 
+import styles from './style';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -25,34 +25,41 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
 
   const handleSignIn = async () => {
-    // Basic validation to prevent empty clicks
+    // Basic validation
     if (!email || !password) {
       return Alert.alert("Required", "Please fill in all fields.");
     }
 
     setLoading(true);
     try {
-      // Connects to your Node.js backend on your Mac M2
-      const res = await axios.post('http://192.168.1.30:5001/login-user', { 
-        email: email.trim(), 
+      // 1. IP ADDRESS: Using the same IP that worked for registration
+      const apiUrl = 'http://10.200.92.151:5001/login-user'; 
+      
+      const res = await axios.post(apiUrl, { 
+        email: email.trim().toLowerCase(), 
         password: password 
       });
       
+      console.log("Login Response:", res.data); 
+
       if (res.data.status === 'ok') {
-        // 1. Update Global Context with User Data & Token
+        // 2. SUCCESS: Sync with Global Context
+        // Passing user data from response to login function
         await login(res.data.user, res.data.token);
         
-        // 2. Clear stack and navigate to the Home/Profile screen
-        // Using replace ensures the user can't "Go Back" to login after success
+        Alert.alert("Success", "Login Successful!");
+        
+        // 3. NAVIGATION: Moving to the main tabs
         router.replace('/(tabs)'); 
       } else {
-        Alert.alert("Authentication Failed", res.data.message || "Invalid credentials.");
+        // Backend sends error message in 'data' field
+        Alert.alert("Authentication Failed", res.data.data || "Invalid credentials.");
       }
     } catch (error) {
-      // Common error if the Mac IP has changed or server is down
+      console.log("Login Error Details:", error);
       Alert.alert(
         "Connection Error", 
-        "Cannot reach the server. Please check your network and Mac IP address."
+        "Cannot reach the server. Please check if your backend is running at http://10.200.92.151:5001"
       );
     } finally {
       setLoading(false);
@@ -90,6 +97,7 @@ export default function LoginPage() {
                 onChangeText={setEmail} 
                 autoCapitalize="none"
                 keyboardType="email-address" 
+                placeholderTextColor="#8892A3"
               />
             </View>
           </View>
@@ -103,6 +111,7 @@ export default function LoginPage() {
                 secureTextEntry 
                 style={styles.input} 
                 onChangeText={setPassword} 
+                placeholderTextColor="#8892A3"
               />
             </View>
           </View>
@@ -131,7 +140,7 @@ export default function LoginPage() {
           </TouchableOpacity>
         </View>
 
-        {/* Professional Encrypted Footer */}
+        {/* Professional Footer */}
         <View style={{ marginTop: 40, alignItems: 'center', paddingHorizontal: 40 }}>
            <Ionicons name="shield-checkmark-outline" size={16} color="#8892A3" />
            <Text style={{ fontSize: 10, color: '#8892A3', textAlign: 'center', marginTop: 5 }}>
