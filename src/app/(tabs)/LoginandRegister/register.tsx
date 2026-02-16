@@ -10,6 +10,9 @@ import {
   TextInput, TouchableOpacity,
   View
 } from 'react-native';
+
+// Import BASE_URL from your config file
+import { BASE_URL } from '../../../constants/config';
 import styles from './style';
 
 export default function RegisterPage() {
@@ -34,8 +37,8 @@ export default function RegisterPage() {
 
     setLoading(true);
     
-    // DIRECT IP ADDRESS - No imports needed!
-    const apiUrl = "http://10.200.92.151:5001/register";
+    // Using BASE_URL from config.js
+    const apiUrl = `${BASE_URL}/register`;
 
     const userData = {
       name, email, mobile, password,
@@ -54,7 +57,7 @@ export default function RegisterPage() {
         Alert.alert("Failed", res.data.data || "User already exists");
       }
     } catch (err) {
-      Alert.alert("Connection Error", "Is your server running at http://10.200.92.151:5001?");
+      Alert.alert("Connection Error", `Is your server running at ${BASE_URL}?`);
       console.log(err);
     } finally {
       setLoading(false);

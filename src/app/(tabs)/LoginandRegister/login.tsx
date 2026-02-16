@@ -13,6 +13,8 @@ import {
   View
 } from 'react-native';
 
+// Import BASE_URL from your config file
+import { BASE_URL } from '../../../constants/config';
 // Ensuring path matches your Usercontext location
 import { useUser } from '../Usercontext';
 import styles from './style';
@@ -32,8 +34,8 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      // 1. IP ADDRESS: Using the same IP that worked for registration
-      const apiUrl = 'http://10.200.92.151:5001/login-user'; 
+      // Using BASE_URL from config.js
+      const apiUrl = `${BASE_URL}/login-user`; 
       
       const res = await axios.post(apiUrl, { 
         email: email.trim().toLowerCase(), 
@@ -59,7 +61,7 @@ export default function LoginPage() {
       console.log("Login Error Details:", error);
       Alert.alert(
         "Connection Error", 
-        "Cannot reach the server. Please check if your backend is running at http://10.200.92.151:5001"
+        `Cannot reach the server at ${BASE_URL}. Please check your network.`
       );
     } finally {
       setLoading(false);
