@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
         
         <View style={styles.section}>
           <Text style={styles.contentText}>
-            We at InCred Money, promise to protect your personal data from unauthorised access, misuse, and disclosure using the right security measures based on the type of data and how we are processing the same.
+            We at Pure Frame Labs Pvt Ltd, promise to protect your personal data from unauthorised access, misuse, and disclosure using the right security measures based on the type of data and how we are processing the same.
           </Text>
         </View>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
             1. When you visit our website we use "cookies" or other similar web tools to enhance the user experience. These tools enable us to maintain your web session while you browse the site as well as helping us provide you with a better, more personalized experience.
           </Text>
           <Text style={styles.contentText}>
-            2. InCred Money automatically receives and records information on our server logs from your browser including your IP address, InCred Money cookie information and the pages you request.
+            2. Pure Frame Labs Pvt Ltd automatically receives and records information on our server logs from your browser including your IP address, Pure Frame Labs Pvt Ltd cookie information and the pages you request.
           </Text>
         </View>
 

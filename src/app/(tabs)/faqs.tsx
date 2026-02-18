@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import {
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 interface FAQItemProps {
   question: string;
@@ -77,10 +77,10 @@ export default function GeneralFAQs() {
         />
 
         <FAQItem
-          question="Does InCred Money recommend any stocks?"
+          question="Does Pure Frame Labs Pvt Ltd recommend any stocks?"
           answer={
             <Text style={styles.answerText}>
-              InCred Money is not a SEBI registered Research Analyst nor is it a SEBI registered investment advisor. We do not recommend any stocks. We will provide you with in-depth information prepared by experts which will help you in your research and decision making. You can also consult your financial advisor for their assistance in investing in Unlisted Shares.
+              Pure Frame Labs Pvt Ltd is not a SEBI registered Research Analyst nor is it a SEBI registered investment advisor. We do not recommend any stocks. We will provide you with in-depth information prepared by experts which will help you in your research and decision making. You can also consult your financial advisor for their assistance in investing in Unlisted Shares.
             </Text>
           }
         />
@@ -139,7 +139,7 @@ export default function GeneralFAQs() {
               Shares would be delivered to the DEMAT account shared with us on a T+3 basis. You can check them in:{"\n\n"}
               • Demat holdings section of your Broking account.{"\n"}
               • CDSL Myeasi app or NSDL Speede app.{"\n"}
-              • The InCred Money app/website dashboard.
+              • The Pure Frame Labs Pvt Ltd app/website dashboard.
             </Text>
           }
         />
@@ -158,7 +158,7 @@ export default function GeneralFAQs() {
         {/* Support Section Footer */}
         <View style={styles.supportFooter}>
           <Text style={styles.supportTitle}>Still need help?</Text>
-          <Text style={styles.supportSub}>Write to us at connect@incredmoney.com with your details (Full Name, PAN, Company Name, Quantity).</Text>
+          <Text style={styles.supportSub}>Write to us at connect@Pure Frame Labs Pvt Ltd.com with your details (Full Name, PAN, Company Name, Quantity).</Text>
         </View>
 
       </ScrollView>

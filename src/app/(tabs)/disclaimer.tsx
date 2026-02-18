@@ -33,7 +33,7 @@ export default function DisclaimerScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>General Disclaimer</Text>
           <Text style={styles.contentText}>
-            The information provided on this platform is for educational purposes only. InCred Money is not a SEBI registered Research Analyst nor is it a SEBI registered investment advisor. We do not recommend any stocks.
+            The information provided on this platform is for educational purposes only. Pure Frame Labs Pvt Ltd is not a SEBI registered Research Analyst nor is it a SEBI registered investment advisor. We do not recommend any stocks.
           </Text>
         </View>
 
@@ -47,14 +47,14 @@ export default function DisclaimerScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Data Accuracy</Text>
           <Text style={styles.contentText}>
-            Pricing of Unlisted Shares is determined on the basis of demand and supply from various brokers. InCred Money sources price data from multiple sources and updates it on the platform so you can track market value, but we do not guarantee the real-time accuracy of these prices.
+            Pricing of Unlisted Shares is determined on the basis of demand and supply from various brokers. Pure Frame Labs Pvt Ltd sources price data from multiple sources and updates it on the platform so you can track market value, but we do not guarantee the real-time accuracy of these prices.
           </Text>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>KYC and Documentation</Text>
           <Text style={styles.contentText}>
-            InCred Money shall not be responsible in the event any discrepancy is found in the information provided by the user. Mismatches in PAN or bank details shall lead to the rejection for opening of the account.
+            Pure Frame Labs Pvt Ltd shall not be responsible in the event any discrepancy is found in the information provided by the user. Mismatches in PAN or bank details shall lead to the rejection for opening of the account.
           </Text>
         </View>
 

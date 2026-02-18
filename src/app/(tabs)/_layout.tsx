@@ -1,11 +1,13 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { Platform, View } from "react-native";
-import { UserProvider } from "./Usercontext"; 
+import { Platform } from "react-native";
+import { KYCProvider } from "./KYCContext";
+import { UserProvider } from "./Usercontext";
 
 export default function TabLayout() {
   return (
     <UserProvider>
+      <KYCProvider> 
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: "#D32F2F",
@@ -107,6 +109,7 @@ export default function TabLayout() {
         <Tabs.Screen name="LoginandRegister/register" options={{ href: null }} />
         <Tabs.Screen name="LoginandRegister/style" options={{ href: null }} />
       </Tabs>
+      </KYCProvider>
     </UserProvider>
   );
 }

@@ -38,7 +38,7 @@ export default function AboutUs() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Our Mission</Text>
           <Text style={styles.contentText}>
-            At InCred Money, we aim to democratize access to investment opportunities that were previously reserved for institutional investors. We provide a transparent, secure, and easy-to-use platform for individual investors to participate in the growth story of India's most promising companies.
+            At Pure Frame Labs Pvt Ltd, we aim to democratize access to investment opportunities that were previously reserved for institutional investors. We provide a transparent, secure, and easy-to-use platform for individual investors to participate in the growth story of India's most promising companies.
           </Text>
         </View>
 
@@ -79,7 +79,7 @@ export default function AboutUs() {
         <View style={styles.encryptionFooter}>
           <Ionicons name="shield-checkmark" size={20} color="#8892A3" />
           <Text style={styles.encryptionText}>
-            Built with Love in India. ©2026 InCred Money.
+            Built with Love in India. ©2026 Pure Frame Labs Pvt Ltd.
           </Text>
         </View>
       </ScrollView>

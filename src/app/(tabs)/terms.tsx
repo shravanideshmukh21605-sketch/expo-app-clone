@@ -33,14 +33,14 @@ export default function TermsAndConditions() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>1. Acceptance of Terms</Text>
           <Text style={styles.contentText}>
-            By accessing and using the InCred Money application, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services. We reserve the right to update these terms at any time without prior notice.
+            By accessing and using the Pure Frame Labs Pvt Ltd application, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services. We reserve the right to update these terms at any time without prior notice.
           </Text>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>2. User Account and Security</Text>
           <Text style={styles.contentText}>
-            You are responsible for maintaining the confidentiality of your login credentials, including your email ID and password. You agree to notify us immediately of any unauthorized use of your account. InCred Money shall not be responsible for any loss arising from your failure to protect your account.
+            You are responsible for maintaining the confidentiality of your login credentials, including your email ID and password. You agree to notify us immediately of any unauthorized use of your account. Pure Frame Labs Pvt Ltd shall not be responsible for any loss arising from your failure to protect your account.
           </Text>
         </View>
 
@@ -67,7 +67,7 @@ export default function TermsAndConditions() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>5. Accuracy of Information</Text>
           <Text style={styles.contentText}>
-            InCred Money shall not be responsible, in the event, any discrepancy is found, in any of the information provided by the user, such as, mismatch of the information provided, shall lead to the rejection for opening of the account.
+            Pure Frame Labs Pvt Ltd shall not be responsible, in the event, any discrepancy is found, in any of the information provided by the user, such as, mismatch of the information provided, shall lead to the rejection for opening of the account.
           </Text>
         </View>
 

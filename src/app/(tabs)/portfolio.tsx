@@ -68,7 +68,7 @@ export default function PortfolioScreen() {
         return (
           <View style={styles.biddContainer}>
             <View style={styles.biddHeader}>
-               <Text style={styles.incredBrand}>InCred Money</Text>
+               <Text style={styles.incredBrand}>Pure Frame Labs Pvt Ltd</Text>
                <Ionicons name="arrow-forward" size={16} color="#888" />
                <Text style={styles.biddBrand}>BIDD</Text>
             </View>

@@ -44,7 +44,7 @@ export default function Home() {
        <TouchableOpacity 
           style={styles.profileCircle} 
           activeOpacity={0.8}
-          onPress={() => router.push('/LoginandRegister/login')} 
+          onPress={() => router.push('profile')} 
         >
           <Ionicons name="person" size={20} color="#fff" />
         </TouchableOpacity>
@@ -334,9 +334,9 @@ export default function Home() {
         {/* 11. FOOTER & DISCLAIMER */}
         <View style={styles.footer}>
           <View style={styles.footerBrandRow}>
-            <Text style={styles.footerBrand}>InCred Money</Text>
+            <Text style={styles.footerBrand}>Pure Frame Labs Pvt Ltd</Text>
             <Text style={styles.footerCopyright}>
-              ©2022-2026 InCred Money. Built with love in India.
+              ©2022-2026 Pure Frame Labs Pvt Ltd. Built with love in India.
             </Text>
           </View>
           <TouchableOpacity style={styles.disclaimerRow}>
